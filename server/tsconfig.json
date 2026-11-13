@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    // Which JavaScript version to produce
+    "target": "es2023",
+
+    // Use Node's modern ES-module rules (this is why imports end in ".js")
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    // Source .ts files live in "src", compiled .js files go to "dist"
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // Turns on all the safety checks
+    "strict": true,
+
+    // Allows: import express from "express"
+    "esModuleInterop": true,
+
+    // Don't re-check types inside node_modules
+    "skipLibCheck": true,
+
+    // Linux (Render, Vercel) is case-sensitive, Mac is not. This catches mismatches early.
+    "forceConsistentCasingInFileNames": true,
+
+    // Forces "import type" for type-only imports
+    "verbatimModuleSyntax": true,
+
+    // TS 6 doesn't load @types automatically. "node" gives us process, console, etc.
+    "types": ["node"],
+
+    // Creates .map files so errors can point to the .ts lines
+    "sourceMap": true
+  },
+
+  // Only look at our source folder
+  "include": ["src"]
+}
