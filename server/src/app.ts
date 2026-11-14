@@ -1,5 +1,7 @@
 import express,{ type Express} from "express";
+import authRoutes from "./routes/auth.routes.js";
 import { errorHandler ,notFound} from "./middleware/errorHandler.js";
+
 export const app: Express = express();
 
 
@@ -17,6 +19,9 @@ app.get("/api/health", (_req,res)=>{
     });
 
 });
+
+app.use("/api/auth",authRoutes);
+
 
 app.use(notFound);
 app.use(errorHandler);

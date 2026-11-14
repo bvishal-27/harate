@@ -24,6 +24,10 @@ MONGO_URI: z
       hasDatabaseName,
       "MONGO_URI must include a database name, e.g. ...mongodb.net/harate?retryWrites=true",
     ),
+
+JWT_SECRET:z.string().min(32,"JWT_SECRET must be at least 32 characters long"),
+
+JWT_EXPIRES_IN_DAYS:z.coerce.number().positive().default(7),
 });
 const parsed = envSchema.safeParse(process.env);
 
