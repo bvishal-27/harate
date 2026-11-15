@@ -4,13 +4,17 @@ import { AppError } from "../utils/AppError.js";
 import { verifyToken } from "../utils/jwt.js";
 import { toPublicUser } from "../utils/serializers.js";
 
-export async function protect(req: Request, _res:Response,next:NextFunction) :Promise<void>{
-const header = req.headers.authorization;
-if(!header || !header.startsWith("Bearer ")){
- throw new AppError(401, "Not authenticated. Please log in.");
+export async function protect(
+  req: Request,
+  _res: Response,
+  next: NextFunction,
+): Promise<void> {
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith("Bearer ")) {
+    throw new AppError(401, "Not authenticated. Please log in.");
   }
   const token = header.slice("Bearer ".length).trim();
- let userId: string;
+  let userId: string;
   try {
     userId = verifyToken(token); // throws if fake or expired
   } catch {
